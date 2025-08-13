@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free privacy tools to protect your digital identity. Password generator, username creator, privacy checker and more.">
+    <title>Privacy Tools - PrivateToolkit</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html" class="logo-text">PrivateToolkit</a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="#tools" class="nav-link active">Tools</a></li>
+                    <li><a href="index.html#blog" class="nav-link">Blog</a></li>
+                    <li><a href="index.html#about" class="nav-link">About</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Tools Header -->
+    <section class="tools-header">
+        <div class="container">
+            <div class="tools-header-content">
+                <h1 class="tools-title">Privacy Tools Collection</h1>
+                <p class="tools-subtitle">Professional-grade tools for protecting your digital identity. All tools work completely offline in your browser.</p>
+                <div class="tools-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Tools Available</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Client-Side</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Data Stored</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Navigation -->
+    <section class="tools-nav">
+        <div class="container">
+            <div class="tools-nav-list">
+                <a href="#username-generator" class="tool-nav-item">
+                    <span class="tool-nav-icon">👤</span>
+                    <span class="tool-nav-text">Username Generator</span>
+                </a>
+                <a href="#password-generator" class="tool-nav-item">
+                    <span class="tool-nav-icon">🔑</span>
+                    <span class="tool-nav-text">Password Generator</span>
+                </a>
+                <a href="#phone-formatter" class="tool-nav-item">
+                    <span class="tool-nav-icon">📱</span>
+                    <span class="tool-nav-text">Phone Formatter</span>
+                </a>
+                <a href="#privacy-score" class="tool-nav-item">
+                    <span class="tool-nav-icon">📊</span>
+                    <span class="tool-nav-text">Privacy Score</span>
+                </a>
+                <a href="#note-encryptor" class="tool-nav-item">
+                    <span class="tool-nav-icon">🔐</span>
+                    <span class="tool-nav-text">Note Encryptor</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Username Generator Tool -->
+    <section id="username-generator" class="tool-section">
+        <div class="container">
+            <div class="tool-header">
+                <div class="tool-info">
+                    <h2 class="tool-title">Username Generator</h2>
+                    <p class="tool-description">Create unique, secure usernames for your online accounts with customizable options and security levels.</p>
+                </div>
+                <div class="tool-badge">
+                    <span class="badge-text">Client-Side Only</span>
+                </div>
+            </div>
+            
+            <div class="tool-container">
+                <div class="tool-controls">
+                    <div class="control-group">
+                        <label for="username-length" class="control-label">Username Length</label>
+                        <input type="range" id="username-length" class="range-input" min="6" max="20" value="12">
+                        <span id="username-length-display" class="range-display">12</span>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Include Options</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="username-numbers" checked>
+                                <span class="checkmark"></span>
+                                Numbers
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="username-symbols">
+                                <span class="checkmark"></span>
+                                Symbols
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="username-uppercase" checked>
+                                <span class="checkmark"></span>
+                                Uppercase
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="username-style" class="control-label">Username Style</label>
+                        <select id="username-style" class="select-input">
+                            <option value="random">Random Characters</option>
+                            <option value="readable">Readable Words</option>
+                            <option value="gaming">Gaming Style</option>
+                            <option value="professional">Professional</option>
+                        </select>
+                    </div>
+                    
+                    <button id="generate-username" class="btn btn-primary">
+                        Generate Username
+                        <span class="btn-icon">⚡</span>
+                    </button>
+                </div>
+                
+                <div class="tool-output">
+                    <div class="output-header">
+                        <h3 class="output-title">Generated Username</h3>
+                        <button id="copy-username" class="btn btn-secondary btn-small" style="display: none;">
+                            Copy
+                            <span class="btn-icon">📋</span>
+                        </button>
+                    </div>
+                    <div class="output-display">
+                        <div id="username-result" class="result-text">Click "Generate Username" to create a secure username</div>
+                    </div>
+                    <div id="username-suggestions" class="suggestions-list" style="display: none;">
+                        <h4 class="suggestions-title">Alternative Suggestions</h4>
+                        <div class="suggestions-grid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Password Generator Tool -->
+    <section id="password-generator" class="tool-section">
+        <div class="container">
+            <div class="tool-header">
+                <div class="tool-info">
+                    <h2 class="tool-title">Password Generator</h2>
+                    <p class="tool-description">Generate strong, customizable passwords with advanced security options and strength analysis.</p>
+                </div>
+                <div class="tool-badge">
+                    <span class="badge-text">Ultra Secure</span>
+                </div>
+            </div>
+            
+            <div class="tool-container">
+                <div class="tool-controls">
+                    <div class="control-group">
+                        <label for="password-length" class="control-label">Password Length</label>
+                        <input type="range" id="password-length" class="range-input" min="8" max="128" value="16">
+                        <span id="password-length-display" class="range-display">16</span>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Character Types</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="password-lowercase" checked>
+                                <span class="checkmark"></span>
+                                Lowercase (a-z)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="password-uppercase" checked>
+                                <span class="checkmark"></span>
+                                Uppercase (A-Z)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="password-numbers" checked>
+                                <span class="checkmark"></span>
+                                Numbers (0-9)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="password-symbols">
+                                <span class="checkmark"></span>
+                                Symbols (!@#$%)
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Advanced Options</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="password-exclude-similar">
+                                <span class="checkmark"></span>
+                                Exclude similar chars (0,O,l,I)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="password-exclude-ambiguous">
+                                <span class="checkmark"></span>
+                                Exclude ambiguous chars
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button id="generate-password" class="btn btn-primary">
+                        Generate Password
+                        <span class="btn-icon">🔑</span>
+                    </button>
+                </div>
+                
+                <div class="tool-output">
+                    <div class="output-header">
+                        <h3 class="output-title">Generated Password</h3>
+                        <button id="copy-password" class="btn btn-secondary btn-small" style="display: none;">
+                            Copy
+                            <span class="btn-icon">📋</span>
+                        </button>
+                    </div>
+                    <div class="output-display">
+                        <div id="password-result" class="result-text">Click "Generate Password" to create a secure password</div>
+                    </div>
+                    <div id="password-strength" class="strength-meter" style="display: none;">
+                        <div class="strength-header">
+                            <span class="strength-label">Password Strength:</span>
+                            <span id="strength-text" class="strength-text">-</span>
+                        </div>
+                        <div class="strength-bar">
+                            <div id="strength-fill" class="strength-fill"></div>
+                        </div>
+                        <div class="strength-details">
+                            <div class="strength-item">
+                                <span class="strength-criterion">Length:</span>
+                                <span id="strength-length" class="strength-value">-</span>
+                            </div>
+                            <div class="strength-item">
+                                <span class="strength-criterion">Character types:</span>
+                                <span id="strength-types" class="strength-value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phone Formatter Tool -->
+    <section id="phone-formatter" class="tool-section">
+        <div class="container">
+            <div class="tool-header">
+                <div class="tool-info">
+                    <h2 class="tool-title">Phone Number Formatter</h2>
+                    <p class="tool-description">Safely format phone numbers for online sharing while protecting your privacy from automated scrapers.</p>
+                </div>
+                <div class="tool-badge">
+                    <span class="badge-text">Privacy Protection</span>
+                </div>
+            </div>
+            
+            <div class="tool-container">
+                <div class="tool-controls">
+                    <div class="control-group">
+                        <label for="phone-input" class="control-label">Enter Phone Number</label>
+                        <input type="tel" id="phone-input" class="text-input" placeholder="e.g., +1-555-123-4567 or 5551234567">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="format-style" class="control-label">Protection Style</label>
+                        <select id="format-style" class="select-input">
+                            <option value="partial">Partial Masking (5██-██3-45██)</option>
+                            <option value="dots">Dot Replacement (555.123.4567)</option>
+                            <option value="spaces">Space Formatting (555 123 4567)</option>
+                            <option value="text">Text Format (five-five-five...)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="mask-level" class="control-label">Privacy Level</label>
+                        <input type="range" id="mask-level" class="range-input" min="1" max="3" value="2">
+                        <div class="range-labels">
+                            <span>Low</span>
+                            <span>Medium</span>
+                            <span>High</span>
+                        </div>
+                    </div>
+                    
+                    <button id="format-phone" class="btn btn-primary">
+                        Format Phone Number
+                        <span class="btn-icon">📱</span>
+                    </button>
+                </div>
+                
+                <div class="tool-output">
+                    <div class="output-header">
+                        <h3 class="output-title">Formatted Phone Number</h3>
+                        <button id="copy-phone" class="btn btn-secondary btn-small" style="display: none;">
+                            Copy
+                            <span class="btn-icon">📋</span>
+                        </button>
+                    </div>
+                    <div class="output-display">
+                        <div id="phone-result" class="result-text">Enter a phone number to format it for safe sharing</div>
+                    </div>
+                    <div id="phone-explanation" class="explanation-text" style="display: none;">
+                        <p><strong>Why format phone numbers?</strong> Automated bots scan websites for phone numbers to add to spam lists. Formatting helps protect your privacy while still sharing your contact information.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Score Tool -->
+    <section id="privacy-score" class="tool-section">
+        <div class="container">
+            <div class="tool-header">
+                <div class="tool-info">
+                    <h2 class="tool-title">Privacy Score Calculator</h2>
+                    <p class="tool-description">Evaluate your digital privacy settings and get personalized recommendations to improve your online security.</p>
+                </div>
+                <div class="tool-badge">
+                    <span class="badge-text">Assessment Tool</span>
+                </div>
+            </div>
+            
+            <div class="tool-container">
+                <div class="tool-controls">
+                    <div class="privacy-categories">
+                        <div class="category-section">
+                            <h3 class="category-title">Social Media Privacy</h3>
+                            <div class="question-group">
+                                <label class="question-item">
+                                    <input type="checkbox" id="social-private-profile" class="privacy-checkbox">
+                                    <span class="checkmark"></span>
+                                    My social media profiles are set to private
+                                </label>
+                                <label class="question-item">
+                                    <input type="checkbox" id="social-limited-personal-info" class="privacy-checkbox">
+                                    <span class="checkmark"></span>
+                                    I limit personal information in my bio/about sections
+                                </label>
+                                <label class="question-item">
+                                    <input type="checkbox" id="social-friend-requests" class="privacy-checkbox">
+                                    <span class="checkmark"></span>
+                                    I only accept friend/connection requests from people I know
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="category-section">
+                            <h3 class="category-title">Account Security</h3>
+                            <div class="question-group">
+                                <label class="question-item">
+                                    <input type="checkbox" id="security-2fa" class="privacy-checkbox">
+                                    <span class="checkmark"></span>
+                                    I use two-factor authentication on important accounts
+                                </label>
+                                <label class="question-item">
+                                    <input type="checkbox" id="security-unique-passwords" class="privacy-checkbox">
+                                    <span class="checkmark"></span>
+                                    I use unique passwords for different accounts
+                                </label>
+                                <label class="question-item">
+                                    <input type="checkbox" id="security-password-manager" class="privacy-checkbox">
+                                    <span class="checkmark"></span>
+                                    I use a password manager
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="category-section">
+                            <h3 class="category-title">Browsing & Communication</h3>
+                            <div class="question-group">
+                                <label class="question-item">
+                                    <input type="checkbox" id="browsing-vpn" class="privacy-checkbox">
+                                    <span class="checkmark"></span>
+                                    I use a VPN for browsing
+                                </label>
+                                <label class="question-item">
+                                    <input type="checkbox" id="browsing-incognito" class="privacy-checkbox">
+                                    <span class="checkmark"></span>
+                                    I regularly use incognito/private browsing mode
+                                </label>
+                                <label class="question-item">
+                                    <input type="checkbox" id="browsing-ad-blocker" class="privacy-checkbox">
+                                    <span class="checkmark"></span>
+                                    I use ad blockers and privacy extensions
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="calculate-privacy-score" class="btn btn-primary">
+                        Calculate My Privacy Score
+                        <span class="btn-icon">📊</span>
+                    </button>
+                </div>
+                
+                <div class="tool-output">
+                    <div class="output-header">
+                        <h3 class="output-title">Your Privacy Score</h3>
+                    </div>
+                    <div id="privacy-score-result" class="score-display" style="display: none;">
+                        <div class="score-circle">
+                            <div class="score-number">
+                                <span id="score-value">0</span>
+                                <span class="score-total">/100</span>
+                            </div>
+                            <div id="score-grade" class="score-grade">F</div>
+                        </div>
+                        <div class="score-details">
+                            <div class="score-breakdown">
+                                <div class="breakdown-item">
+                                    <span class="breakdown-label">Social Media:</span>
+                                    <span id="social-score" class="breakdown-score">0/30</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <span class="breakdown-label">Account Security:</span>
+                                    <span id="security-score" class="breakdown-score">0/40</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <span class="breakdown-label">Browsing Privacy:</span>
+                                    <span id="browsing-score" class="breakdown-score">0/30</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="privacy-recommendations" class="recommendations-list" style="display: none;">
+                        <h4 class="recommendations-title">Personalized Recommendations</h4>
+                        <div class="recommendations-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Note Encryptor Tool -->
+    <section id="note-encryptor" class="tool-section">
+        <div class="container">
+            <div class="tool-header">
+                <div class="tool-info">
+                    <h2 class="tool-title">Note Encryptor</h2>
+                    <p class="tool-description">Encrypt sensitive text and notes locally in your browser using AES encryption. Your data never leaves your device.</p>
+                </div>
+                <div class="tool-badge">
+                    <span class="badge-text">AES-256 Encryption</span>
+                </div>
+            </div>
+            
+            <div class="tool-container">
+                <div class="tool-controls">
+                    <div class="control-group">
+                        <label for="note-text" class="control-label">Enter Text to Encrypt</label>
+                        <textarea id="note-text" class="textarea-input" rows="6" placeholder="Type your sensitive text here..."></textarea>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="encryption-password" class="control-label">Encryption Password</label>
+                        <input type="password" id="encryption-password" class="text-input" placeholder="Choose a strong password">
+                    </div>
+                    
+                    <div class="control-group">
+                        <div class="button-row">
+                            <button id="encrypt-note" class="btn btn-primary">
+                                Encrypt Text
+                                <span class="btn-icon">🔒</span>
+                            </button>
+                            <button id="decrypt-note" class="btn btn-secondary">
+                                Decrypt Text
+                                <span class="btn-icon">🔓</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-output">
+                    <div class="output-header">
+                        <h3 class="output-title">Result</h3>
+                        <button id="copy-encrypted-text" class="btn btn-secondary btn-small" style="display: none;">
+                            Copy
+                            <span class="btn-icon">📋</span>
+                        </button>
+                    </div>
+                    <div class="output-display">
+                        <textarea id="encrypted-result" class="textarea-output" rows="6" placeholder="Encrypted or decrypted text will appear here..." readonly></textarea>
+                    </div>
+                    <div class="encryption-info">
+                        <p><strong>Security Notice:</strong> This tool uses AES-256-GCM encryption directly in your browser. Your password and data are never transmitted to any server.</p>
+                        <p><strong>Important:</strong> Keep your password safe! Without it, your encrypted data cannot be recovered.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3 class="logo-text">PrivateToolkit</h3>
+                        <p class="footer-description">Professional privacy tools for the modern web</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Tools</h4>
+                    <ul class="footer-links">
+                        <li><a href="#username-generator">Username Generator</a></li>
+                        <li><a href="#password-generator">Password Generator</a></li>
+                        <li><a href="#phone-formatter">Phone Formatter</a></li>
+                        <li><a href="#privacy-score">Privacy Score</a></li>
+                        <li><a href="#note-encryptor">Note Encryptor</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#blog">Privacy Blog</a></li>
+                        <li><a href="guides.html">Security Guides</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2024 PrivateToolkit. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">GitHub</a>
+                    <a href="#" class="social-link">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/username-generator.js"></script>
+    <script src="js/password-generator.js"></script>
+    <script src="js/phone-formatter.js"></script>
+    <script src="js/privacy-score.js"></script>
+    <script src="js/note-encryptor.js"></script>
+</body>
+</html>

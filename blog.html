@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Privacy and security tips, guides, and insights. Stay informed about digital privacy best practices and cybersecurity trends.">
+    <meta name="keywords" content="privacy tips, cybersecurity, digital security, online privacy, data protection, security guides">
+    <title>Privacy Blog - PrivateToolkit</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html" class="logo-text">PrivateToolkit</a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="tools.html" class="nav-link">Tools</a></li>
+                    <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                    <li><a href="index.html#about" class="nav-link">About</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Blog Header -->
+    <section class="blog-header">
+        <div class="container">
+            <div class="blog-header-content">
+                <h1 class="blog-title">Privacy & Security Blog</h1>
+                <p class="blog-subtitle">Expert insights, practical tips, and the latest updates on digital privacy and cybersecurity</p>
+                <div class="blog-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Articles</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">Weekly</span>
+                        <span class="stat-label">Updates</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">Expert</span>
+                        <span class="stat-label">Insights</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Categories Filter -->
+    <section class="blog-categories">
+        <div class="container">
+            <div class="categories-header">
+                <h2 class="categories-title">Browse by Category</h2>
+                <div class="search-box">
+                    <input type="text" id="blog-search" class="search-input" placeholder="Search articles...">
+                    <button class="search-btn" id="search-btn">
+                        <span class="search-icon">🔍</span>
+                    </button>
+                </div>
+            </div>
+            <div class="categories-filter">
+                <button class="category-btn active" data-category="all">All Articles</button>
+                <button class="category-btn" data-category="privacy-tips">Privacy Tips</button>
+                <button class="category-btn" data-category="security-guides">Security Guides</button>
+                <button class="category-btn" data-category="password-security">Password Security</button>
+                <button class="category-btn" data-category="social-media">Social Media Privacy</button>
+                <button class="category-btn" data-category="mobile-security">Mobile Security</button>
+                <button class="category-btn" data-category="vpn-guides">VPN & Encryption</button>
+                <button class="category-btn" data-category="data-protection">Data Protection</button>
+                <button class="category-btn" data-category="news-updates">News & Updates</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Articles -->
+    <section class="featured-articles">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Articles</h2>
+                <p class="section-subtitle">Must-read articles on privacy and security</p>
+            </div>
+            <div class="featured-grid">
+                <!-- Featured articles will be populated here -->
+                <div class="featured-placeholder">
+                    <div class="placeholder-content">
+                        <div class="placeholder-icon">📝</div>
+                        <h3 class="placeholder-title">Featured Articles Coming Soon</h3>
+                        <p class="placeholder-text">Our expert team is preparing in-depth articles on the latest privacy and security topics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Blog Content -->
+    <section class="blog-content">
+        <div class="container">
+            <div class="blog-layout">
+                <!-- Main Articles Grid -->
+                <div class="articles-main">
+                    <div class="articles-header">
+                        <h2 class="articles-title">Latest Articles</h2>
+                        <div class="sort-options">
+                            <select id="sort-articles" class="sort-select">
+                                <option value="date-desc">Newest First</option>
+                                <option value="date-asc">Oldest First</option>
+                                <option value="popular">Most Popular</option>
+                                <option value="title">Alphabetical</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Articles Grid -->
+                    <div class="articles-grid" id="articles-container">
+                        <!-- Articles will be populated here -->
+                        <div class="articles-placeholder">
+                            <div class="placeholder-grid">
+                                <div class="article-placeholder">
+                                    <div class="article-placeholder-image"></div>
+                                    <div class="article-placeholder-content">
+                                        <div class="article-placeholder-category">Privacy Tips</div>
+                                        <div class="article-placeholder-title"></div>
+                                        <div class="article-placeholder-excerpt"></div>
+                                        <div class="article-placeholder-meta"></div>
+                                    </div>
+                                </div>
+                                <div class="article-placeholder">
+                                    <div class="article-placeholder-image"></div>
+                                    <div class="article-placeholder-content">
+                                        <div class="article-placeholder-category">Security Guides</div>
+                                        <div class="article-placeholder-title"></div>
+                                        <div class="article-placeholder-excerpt"></div>
+                                        <div class="article-placeholder-meta"></div>
+                                    </div>
+                                </div>
+                                <div class="article-placeholder">
+                                    <div class="article-placeholder-image"></div>
+                                    <div class="article-placeholder-content">
+                                        <div class="article-placeholder-category">Password Security</div>
+                                        <div class="article-placeholder-title"></div>
+                                        <div class="article-placeholder-excerpt"></div>
+                                        <div class="article-placeholder-meta"></div>
+                                    </div>
+                                </div>
+                                <div class="article-placeholder">
+                                    <div class="article-placeholder-image"></div>
+                                    <div class="article-placeholder-content">
+                                        <div class="article-placeholder-category">VPN & Encryption</div>
+                                        <div class="article-placeholder-title"></div>
+                                        <div class="article-placeholder-excerpt"></div>
+                                        <div class="article-placeholder-meta"></div>
+                                    </div>
+                                </div>
+                                <div class="article-placeholder">
+                                    <div class="article-placeholder-image"></div>
+                                    <div class="article-placeholder-content">
+                                        <div class="article-placeholder-category">Mobile Security</div>
+                                        <div class="article-placeholder-title"></div>
+                                        <div class="article-placeholder-excerpt"></div>
+                                        <div class="article-placeholder-meta"></div>
+                                    </div>
+                                </div>
+                                <div class="article-placeholder">
+                                    <div class="article-placeholder-image"></div>
+                                    <div class="article-placeholder-content">
+                                        <div class="article-placeholder-category">Data Protection</div>
+                                        <div class="article-placeholder-title"></div>
+                                        <div class="article-placeholder-excerpt"></div>
+                                        <div class="article-placeholder-meta"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="no-content-message">
+                                <div class="no-content-icon">📚</div>
+                                <h3 class="no-content-title">Articles Coming Soon</h3>
+                                <p class="no-content-text">We're working on comprehensive privacy and security articles. Check back soon for expert insights and practical guides.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination" id="blog-pagination" style="display: none;">
+                        <button class="pagination-btn" id="prev-page">
+                            <span class="pagination-icon">←</span>
+                            Previous
+                        </button>
+                        <div class="pagination-numbers" id="pagination-numbers">
+                            <!-- Page numbers will be generated here -->
+                        </div>
+                        <button class="pagination-btn" id="next-page">
+                            Next
+                            <span class="pagination-icon">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="blog-sidebar">
+                    <!-- Newsletter Signup -->
+                    <div class="sidebar-widget newsletter-widget">
+                        <div class="widget-header">
+                            <h3 class="widget-title">Stay Updated</h3>
+                            <p class="widget-subtitle">Get the latest privacy tips delivered to your inbox</p>
+                        </div>
+                        <div class="newsletter-form">
+                            <input type="email" class="newsletter-input" placeholder="Enter your email" id="newsletter-email">
+                            <button class="newsletter-btn" id="subscribe-btn">Subscribe</button>
+                        </div>
+                        <div class="newsletter-privacy">
+                            <small class="privacy-notice">We respect your privacy. Unsubscribe at any time.</small>
+                        </div>
+                    </div>
+
+                    <!-- Popular Articles -->
+                    <div class="sidebar-widget popular-widget">
+                        <div class="widget-header">
+                            <h3 class="widget-title">Popular Articles</h3>
+                        </div>
+                        <div class="popular-articles">
+                            <div class="popular-placeholder">
+                                <div class="popular-item-placeholder">
+                                    <div class="popular-number">1</div>
+                                    <div class="popular-content">
+                                        <div class="popular-title-placeholder"></div>
+                                        <div class="popular-meta-placeholder"></div>
+                                    </div>
+                                </div>
+                                <div class="popular-item-placeholder">
+                                    <div class="popular-number">2</div>
+                                    <div class="popular-content">
+                                        <div class="popular-title-placeholder"></div>
+                                        <div class="popular-meta-placeholder"></div>
+                                    </div>
+                                </div>
+                                <div class="popular-item-placeholder">
+                                    <div class="popular-number">3</div>
+                                    <div class="popular-content">
+                                        <div class="popular-title-placeholder"></div>
+                                        <div class="popular-meta-placeholder"></div>
+                                    </div>
+                                </div>
+                                <div class="popular-item-placeholder">
+                                    <div class="popular-number">4</div>
+                                    <div class="popular-content">
+                                        <div class="popular-title-placeholder"></div>
+                                        <div class="popular-meta-placeholder"></div>
+                                    </div>
+                                </div>
+                                <div class="popular-item-placeholder">
+                                    <div class="popular-number">5</div>
+                                    <div class="popular-content">
+                                        <div class="popular-title-placeholder"></div>
+                                        <div class="popular-meta-placeholder"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Categories Widget -->
+                    <div class="sidebar-widget categories-widget">
+                        <div class="widget-header">
+                            <h3 class="widget-title">Categories</h3>
+                        </div>
+                        <div class="categories-list">
+                            <a href="#" class="category-link" data-category="privacy-tips">
+                                <span class="category-name">Privacy Tips</span>
+                                <span class="category-count">0</span>
+                            </a>
+                            <a href="#" class="category-link" data-category="security-guides">
+                                <span class="category-name">Security Guides</span>
+                                <span class="category-count">0</span>
+                            </a>
+                            <a href="#" class="category-link" data-category="password-security">
+                                <span class="category-name">Password Security</span>
+                                <span class="category-count">0</span>
+                            </a>
+                            <a href="#" class="category-link" data-category="social-media">
+                                <span class="category-name">Social Media Privacy</span>
+                                <span class="category-count">0</span>
+                            </a>
+                            <a href="#" class="category-link" data-category="mobile-security">
+                                <span class="category-name">Mobile Security</span>
+                                <span class="category-count">0</span>
+                            </a>
+                            <a href="#" class="category-link" data-category="vpn-guides">
+                                <span class="category-name">VPN & Encryption</span>
+                                <span class="category-count">0</span>
+                            </a>
+                            <a href="#" class="category-link" data-category="data-protection">
+                                <span class="category-name">Data Protection</span>
+                                <span class="category-count">0</span>
+                            </a>
+                            <a href="#" class="category-link" data-category="news-updates">
+                                <span class="category-name">News & Updates</span>
+                                <span class="category-count">0</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Tags Widget -->
+                    <div class="sidebar-widget tags-widget">
+                        <div class="widget-header">
+                            <h3 class="widget-title">Popular Tags</h3>
+                        </div>
+                        <div class="tags-cloud">
+                            <span class="tag">password-security</span>
+                            <span class="tag">two-factor-auth</span>
+                            <span class="tag">vpn</span>
+                            <span class="tag">encryption</span>
+                            <span class="tag">social-media</span>
+                            <span class="tag">mobile-privacy</span>
+                            <span class="tag">data-protection</span>
+                            <span class="tag">browser-security</span>
+                            <span class="tag">email-privacy</span>
+                            <span class="tag">identity-protection</span>
+                            <span class="tag">cybersecurity</span>
+                            <span class="tag">online-tracking</span>
+                        </div>
+                    </div>
+
+                    <!-- Archive Widget -->
+                    <div class="sidebar-widget archive-widget">
+                        <div class="widget-header">
+                            <h3 class="widget-title">Archive</h3>
+                        </div>
+                        <div class="archive-list">
+                            <div class="archive-placeholder">
+                                <div class="archive-item-placeholder">
+                                    <div class="archive-month-placeholder"></div>
+                                    <div class="archive-count-placeholder"></div>
+                                </div>
+                                <div class="archive-item-placeholder">
+                                    <div class="archive-month-placeholder"></div>
+                                    <div class="archive-count-placeholder"></div>
+                                </div>
+                                <div class="archive-item-placeholder">
+                                    <div class="archive-month-placeholder"></div>
+                                    <div class="archive-count-placeholder"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="blog-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Protect Your Digital Privacy Today</h2>
+                <p class="cta-subtitle">Use our professional privacy tools to secure your online presence</p>
+                <div class="cta-buttons">
+                    <a href="tools.html" class="btn btn-primary">Explore Privacy Tools</a>
+                    <a href="#newsletter-email" class="btn btn-secondary">Subscribe to Newsletter</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3 class="logo-text">PrivateToolkit</h3>
+                        <p class="footer-description">Professional privacy tools for the modern web</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Tools</h4>
+                    <ul class="footer-links">
+                        <li><a href="tools.html#username-generator">Username Generator</a></li>
+                        <li><a href="tools.html#password-generator">Password Generator</a></li>
+                        <li><a href="tools.html#phone-formatter">Phone Formatter</a></li>
+                        <li><a href="tools.html#privacy-score">Privacy Score</a></li>
+                        <li><a href="tools.html#note-encryptor">Note Encryptor</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="blog.html">Privacy Blog</a></li>
+                        <li><a href="guides.html">Security Guides</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2024 PrivateToolkit. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">GitHub</a>
+                    <a href="#" class="social-link">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/blog.js"></script>
+</body>
+</html>
