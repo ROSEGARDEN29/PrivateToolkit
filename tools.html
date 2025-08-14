@@ -99,81 +99,81 @@
             </div>
             
             <div class="tool-container">
-                <div class="tool-controls">
-                    <div class="control-group">
-                        <label for="username-length" class="control-label">Username Length</label>
-                        <input type="range" id="username-length" class="range-input" min="6" max="20" value="12">
-                        <span id="username-length-display" class="range-display">12</span>
-                    </div>
-                    
-                    <div class="control-group">
-                        <label class="control-label">Include Options</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="checkbox" id="username-numbers" checked>
-                                <span class="checkmark"></span>
-                                Numbers
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" id="username-symbols">
-                                <span class="checkmark"></span>
-                                Symbols
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" id="username-uppercase" checked>
-                                <span class="checkmark"></span>
-                                Uppercase
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <div class="control-group">
-						<label for="username-style" class="control-label">Username Style</label>
-						<select id="username-style" class="select-input">
-							<option value="random">Random Characters</option>
-							<option value="readable">Readable Words</option>
-							<option value="gaming">Gaming Style</option>
-							<option value="professional">Professional</option>
-							<option value="tech">Tech Style</option>
-							<option value="nature">Nature Inspired</option>
-							<option value="fantasy">Fantasy Style</option>
-							<option value="modern">Modern Style</option>
-							<option value="creative">Creative Artist</option>
-							<option value="minimalist">Minimalist</option>
-							<option value="verbnoun">Verb + Noun</option>
-							<option value="doubleadj">Double Adjective</option>
-							<option value="corporate">Corporate Style</option>
-							<option value="animalaction">Animal + Action</option>
-							<option value="abstract">Abstract Concept</option>
-							<option value="threeword">Three Word Combo</option>
-						</select>
-                    <button id="generate-username" class="btn btn-primary">
-                        Generate Username
-                        <span class="btn-icon">⚡</span>
-                    </button>
-                </div>
-                
-                <div class="tool-output">
-                    <div class="output-header">
-                        <h3 class="output-title">Generated Username</h3>
-                        <button id="copy-username" class="btn btn-secondary btn-small" style="display: none;">
-                            Copy
-                            <span class="btn-icon">📋</span>
-                        </button>
-                    </div>
-						<div class="output-content-grid">
-							<div class="output-display">
-								<div id="username-result" class="result-text">Click "Generate Username" to create a secure username</div>
-							</div>
-							<div id="username-suggestions" class="suggestions-list" style="display: none;">
-								<h4 class="suggestions-title">Alternative Suggestions</h4>
-								<div class="suggestions-grid"></div>
+                    <div class="tool-controls">
+						<div class="control-group">
+							<label for="username-length" class="control-label">Username Length</label>
+							<input type="range" id="username-length" class="range-input" min="6" max="20" value="12">
+							<span id="username-length-display" class="range-display">12</span>
+						</div>
+        
+						<div class="control-group">
+							<label class="control-label">Include Options</label>
+							<div class="checkbox-group">
+								<label class="checkbox-item">
+									<input type="checkbox" id="username-numbers" checked>
+									<span class="checkmark"></span>
+									Numbers
+								</label>
+								<label class="checkbox-item">
+									<input type="checkbox" id="username-symbols">
+									<span class="checkmark"></span>
+									Symbols
+								</label>
+								<label class="checkbox-item">
+									<input type="checkbox" id="username-uppercase" checked>
+									<span class="checkmark"></span>
+									Uppercase
+								</label>
 							</div>
 						</div>
-                </div>
-            </div>
-        </div>
-    </section>
+        
+						<div class="control-group">
+							<label for="username-style" class="control-label">Username Style</label>
+							<select id="username-style" class="select-input">
+								<option value="random">Random Characters</option>
+								<option value="readable">Readable Words</option>
+								<option value="gaming">Gaming Style</option>
+								<option value="professional">Professional</option>
+								<option value="tech">Tech Style</option>
+								<option value="nature">Nature Inspired</option>
+								<option value="fantasy">Fantasy Style</option>
+								<option value="modern">Modern Style</option>
+								<option value="creative">Creative Artist</option>
+								<option value="minimalist">Minimalist</option>
+								<option value="verbnoun">Verb + Noun</option>
+								<option value="doubleadj">Double Adjective</option>
+								<option value="corporate">Corporate Style</option>
+								<option value="animalaction">Animal + Action</option>
+								<option value="abstract">Abstract Concept</option>
+								<option value="threeword">Three Word Combo</option>
+							</select>
+						</div>
+        
+						<button id="generate-username" class="btn btn-primary">
+							Generate Username
+							<span class="btn-icon">⚡</span>
+						</button>
+					</div>
+    
+					<div class="tool-output">
+						<div class="output-header">
+							<h3 class="output-title">Generated Username</h3>
+							<button id="copy-username" class="btn btn-secondary btn-small" style="display: none;">
+								Copy
+								<span class="btn-icon">📋</span>
+							</button>
+						</div>
+						<div class="output-display">
+							<div id="username-result" class="result-text">Click "Generate Username" to create a secure username</div>
+						</div>
+						<div id="username-suggestions" class="suggestions-list" style="display: none;">
+							<h4 class="suggestions-title">Alternative Suggestions</h4>
+							<div class="suggestions-grid"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
     <!-- Password Generator Tool -->
     <section id="password-generator" class="tool-section">
