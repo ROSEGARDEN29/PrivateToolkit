@@ -475,7 +475,6 @@ class UsernameGenerator {
         const shortAdj = ['new', 'old', 'big', 'top', 'pro', 'max', 'red', 'hot', 'ice', 'web', 'raw', 'dry', 'low', 'fun', 'odd', 'shy', 'fat', 'sad', 'mad', 'bad', 'far', 'car', 'bar', 'war', 'tax', 'wax', 'box', 'fox', 'six', 'mix'];
         const shortNoun = ['app', 'dev', 'art', 'web', 'net', 'bot', 'fox', 'cat', 'dog', 'bee', 'box', 'car', 'bar', 'jar', 'tar', 'war', 'day', 'way', 'bay', 'ray', 'say', 'pay', 'may', 'key', 'eye', 'sky', 'fly', 'try', 'dry', 'buy'];
         const shortVerb = ['run', 'fly', 'win', 'try', 'use', 'get', 'set', 'fix', 'mix', 'add', 'cut', 'hit', 'sit', 'fit', 'put', 'eat', 'see', 'buy', 'pay', 'say', 'lay', 'may', 'way', 'day', 'play', 'stay', 'pray', 'gray', 'sway', 'clay'];
-		const shortVerb = ['run', 'fly', 'win', 'try', 'use', 'get', 'set', 'fix', 'mix', 'add', 'cut', 'hit', 'sit', 'fit', 'put', 'eat', 'see', 'buy', 'pay', 'say', 'lay', 'may', 'way', 'day', 'play', 'stay', 'pray', 'gray', 'sway', 'clay'];
 
         let username = this.getRandomElement(shortAdj) + 
                       this.getRandomElement(shortNoun) + 
