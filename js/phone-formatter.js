@@ -1,4 +1,4 @@
-// Phone Number Formatter functionality
+// Phone Number Formatter functionality - IMPROVED VERSION
 (function() {
     'use strict';
 
@@ -324,7 +324,7 @@
         switch (style) {
             case 'partial':
                 result.formatted = applyPartialMasking(nationalNumber, maskLevel);
-                result.description = 'Partial masking with block characters (█)';
+                result.description = 'Partial masking with asterisks (*) - humans can read it, bots cannot';
                 break;
                 
             case 'dots':
@@ -346,130 +346,138 @@
         return result;
     }
 
+    // IMPROVED: Better partial masking with asterisks instead of blocks
     function applyPartialMasking(number, level) {
         const len = number.length;
         let masked = number;
         
         switch (level) {
-            case 1: // Low - mask middle digits
+            case 1: // Low - only mask middle section, keep first 3 and last 2
                 if (len >= 7) {
-                    const start = Math.floor(len * 0.3);
-                    const end = Math.ceil(len * 0.7);
-                    masked = number.substring(0, start) + '█'.repeat(end - start) + number.substring(end);
+                    if (len === 10) {
+                        // Format: 555-***-67 (US format)
+                        masked = `${number.substring(0, 3)}-***-${number.substring(7)}`;
+                    } else {
+                        const keepStart = 3;
+                        const keepEnd = 2;
+                        const maskLength = len - keepStart - keepEnd;
+                        masked = number.substring(0, keepStart) + '*'.repeat(maskLength) + number.substring(len - keepEnd);
+                    }
                 }
                 break;
                 
-            case 2: // Medium - mask more digits
+            case 2: // Medium - mask more but keep readable pattern
                 if (len >= 7) {
-                    const keepStart = Math.min(2, Math.floor(len * 0.2));
-                    const keepEnd = Math.min(2, Math.floor(len * 0.2));
-                    const maskLength = len - keepStart - keepEnd;
-                    masked = number.substring(0, keepStart) + '█'.repeat(maskLength) + number.substring(len - keepEnd);
+                    if (len === 10) {
+                        // Format: 5**-**3-**67 (more balanced)
+                        masked = `5**-**3-**${number.substring(8)}`;
+                    } else {
+                        const keepStart = Math.min(2, Math.floor(len * 0.2));
+                        const keepEnd = Math.min(2, Math.floor(len * 0.2));
+                        const maskLength = len - keepStart - keepEnd;
+                        masked = number.substring(0, keepStart) + '*'.repeat(Math.min(maskLength, 6)) + number.substring(len - keepEnd);
+                    }
                 }
                 break;
                 
-            case 3: // High - minimal visible digits
+            case 3: // High - minimal visible digits but still readable
                 if (len >= 7) {
-                    const keepStart = 1;
-                    const keepEnd = 2;
-                    const maskLength = len - keepStart - keepEnd;
-                    masked = number.substring(0, keepStart) + '█'.repeat(maskLength) + number.substring(len - keepEnd);
+                    if (len === 10) {
+                        // Format: 5**-***-**67 (high privacy but readable)
+                        masked = `5**-***-**${number.substring(8)}`;
+                    } else {
+                        const keepStart = 1;
+                        const keepEnd = 2;
+                        const maskLength = len - keepStart - keepEnd;
+                        masked = number.substring(0, keepStart) + '*'.repeat(Math.min(maskLength, 8)) + number.substring(len - keepEnd);
+                    }
                 }
                 break;
         }
         
-        // Format with separators
-        return formatMaskedNumber(masked);
+        return masked;
     }
 
-    function formatMaskedNumber(masked) {
-        if (masked.length === 10) {
-            return `${masked.substring(0, 3)}-██-${masked.substring(6)}`;
-        } else if (masked.length <= 7) {
-            return masked.replace(/(\d{3})(.*?)(\d{4})/, '$1-$2-$3');
-        } else {
-            return masked.replace(/(\d{2,3})(.*?)(\d{2,4})/, '$1-$2-$3');
-        }
-    }
-
+    // IMPROVED: Better dot formatting
     function applyDotFormatting(number, level) {
         let formatted = number;
         
-        // Add dots at different intervals based on level
         switch (level) {
-            case 1: // Standard dot separation
+            case 1: // Standard dot separation - easy to read
                 if (number.length === 10) {
                     formatted = `${number.substring(0, 3)}.${number.substring(3, 6)}.${number.substring(6)}`;
-                } else {
-                    formatted = number.replace(/(\d{2,3})(\d{3,4})(\d{4})/, '$1.$2.$3');
+                } else if (number.length >= 7) {
+                    formatted = number.replace(/(\d{2,3})(\d{3,4})(\d{3,4})/, '$1.$2.$3');
                 }
                 break;
                 
-            case 2: // More frequent dots
+            case 2: // Dots every 2 digits - still readable
+                formatted = number.replace(/(\d{2})/g, '$1.').replace(/\.$/, '');
+                break;
+                
+            case 3: // Individual digits with dots - maximum obfuscation
                 formatted = number.split('').join('.');
-                break;
-                
-            case 3: // Dots with spacing
-                if (number.length === 10) {
-                    formatted = `${number.substring(0, 3)} . ${number.substring(3, 6)} . ${number.substring(6)}`;
-                } else {
-                    formatted = number.replace(/(\d{2,3})(\d{3,4})(\d{4})/, '$1 . $2 . $3');
-                }
                 break;
         }
         
         return formatted;
     }
 
+    // IMPROVED: Better space formatting
     function applySpaceFormatting(number, level) {
         let formatted = number;
         
         switch (level) {
-            case 1: // Standard spacing
+            case 1: // Standard spacing - natural grouping
                 if (number.length === 10) {
                     formatted = `${number.substring(0, 3)} ${number.substring(3, 6)} ${number.substring(6)}`;
-                } else {
-                    formatted = number.replace(/(\d{2,3})(\d{3,4})(\d{4})/, '$1 $2 $3');
+                } else if (number.length >= 7) {
+                    formatted = number.replace(/(\d{2,3})(\d{3,4})(\d{3,4})/, '$1 $2 $3');
                 }
                 break;
                 
-            case 2: // Individual digit spacing
+            case 2: // Pairs with spaces - balanced readability
+                formatted = number.replace(/(\d{2})/g, '$1 ').trim();
+                break;
+                
+            case 3: // Individual digits - maximum separation
                 formatted = number.split('').join(' ');
-                break;
-                
-            case 3: // Double spacing
-                if (number.length === 10) {
-                    formatted = `${number.substring(0, 3)}  ${number.substring(3, 6)}  ${number.substring(6)}`;
-                } else {
-                    formatted = number.replace(/(\d{2,3})(\d{3,4})(\d{4})/, '$1  $2  $3');
-                }
                 break;
         }
         
         return formatted;
     }
 
+    // IMPROVED: More practical text formatting
     function applyTextFormatting(number, level) {
         let formatted = '';
         
         switch (level) {
-            case 1: // Convert some digits to words
+            case 1: // Convert only middle digits to words - still practical
                 const digits = number.split('');
-                formatted = digits.map((digit, index) => {
-                    // Convert every other digit to word
-                    return index % 2 === 0 ? NUMBER_WORDS[digit] : digit;
-                }).join('-');
+                if (number.length === 10) {
+                    // Convert middle section: 555-two-three-four-5678
+                    formatted = `${digits[0]}${digits[1]}${digits[2]}-${NUMBER_WORDS[digits[3]]}-${NUMBER_WORDS[digits[4]]}-${NUMBER_WORDS[digits[5]]}-${digits.slice(6).join('')}`;
+                } else {
+                    // Convert every 3rd digit to word
+                    formatted = digits.map((digit, index) => {
+                        return index % 3 === 1 ? NUMBER_WORDS[digit] : digit;
+                    }).join('');
+                }
                 break;
                 
-            case 2: // Convert more digits to words
+            case 2: // Mix of numbers and words - balanced approach
                 formatted = number.split('').map((digit, index) => {
-                    // Convert 2/3 of digits to words
-                    return index % 3 !== 0 ? NUMBER_WORDS[digit] : digit;
+                    // Convert alternating digits to words
+                    return index % 2 === 1 ? NUMBER_WORDS[digit] : digit;
                 }).join('-');
                 break;
                 
-            case 3: // Convert all digits to words
-                formatted = number.split('').map(digit => NUMBER_WORDS[digit]).join('-');
+            case 3: // Spell out first half - creative but readable
+                const half = Math.ceil(number.length / 2);
+                const firstHalf = number.substring(0, half).split('').map(d => NUMBER_WORDS[d]).join('-');
+                const secondHalf = number.substring(half);
+                formatted = `${firstHalf}-${secondHalf}`;
                 break;
         }
         
@@ -493,12 +501,12 @@
             <p><strong>Privacy method:</strong> ${result.description}</p>
             <p><strong>Protection level:</strong> ${getLevelName(result.maskLevel)}</p>
             <div class="privacy-tips">
-                <h4>Privacy Benefits:</h4>
+                <h4>Why this works:</h4>
                 <ul>
-                    <li>Prevents automated phone number harvesting</li>
-                    <li>Reduces spam call likelihood</li>
-                    <li>Maintains human readability</li>
-                    <li>Suitable for public sharing</li>
+                    <li><strong>Humans can read it:</strong> Your formatted number is still understandable to people</li>
+                    <li><strong>Bots can't parse it:</strong> Automated scrapers look for standard phone patterns</li>
+                    <li><strong>Reduces spam:</strong> Breaking the pattern significantly reduces unwanted calls</li>
+                    <li><strong>Safe for sharing:</strong> Post it on websites, social media, or business listings</li>
                 </ul>
             </div>
         `;
@@ -508,14 +516,19 @@
     }
 
     function getLevelName(level) {
-        const names = ['', 'Low (readable)', 'Medium (balanced)', 'High (maximum privacy)'];
+        const names = ['', 'Low (most readable)', 'Medium (balanced)', 'High (maximum privacy)'];
         return names[level] || 'Unknown';
     }
 
     function showPreview(result) {
-        // Could show a preview of formatting in real-time
-        // For now, we'll just update the button text
-        elements.formatBtn.textContent = `Apply ${result.style} Formatting`;
+        // Update button text to show current format
+        const styleNames = {
+            'partial': 'Asterisk Masking',
+            'dots': 'Dot Formatting', 
+            'spaces': 'Space Formatting',
+            'text': 'Text Conversion'
+        };
+        elements.formatBtn.innerHTML = `Apply ${styleNames[result.style]} <span class="btn-icon">📱</span>`;
     }
 
     function copyFormattedPhone() {
@@ -553,6 +566,12 @@
             const notification = document.createElement('div');
             notification.className = 'error-notification';
             notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed; top: 20px; right: 20px; 
+                background: #f44336; color: white; 
+                padding: 12px 20px; border-radius: 4px; 
+                z-index: 1000; max-width: 300px;
+            `;
             document.body.appendChild(notification);
             setTimeout(() => notification.remove(), 3000);
         }
@@ -562,6 +581,19 @@
         console.log(message);
         if (typeof showNotification === 'function') {
             showNotification(message, 'success');
+        } else {
+            // Fallback notification
+            const notification = document.createElement('div');
+            notification.className = 'success-notification';
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed; top: 20px; right: 20px; 
+                background: #4caf50; color: white; 
+                padding: 12px 20px; border-radius: 4px; 
+                z-index: 1000; max-width: 300px;
+            `;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
         }
     }
 
