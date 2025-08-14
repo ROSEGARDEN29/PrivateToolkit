@@ -1006,10 +1006,19 @@ a:hover {
   background: var(--bg-hover);
 }
 
-.output-content-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+.tool-output .output-content-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+    align-items: start !important;
+}
+
+.tool-output .output-display {
+    margin-bottom: 0 !important;
+}
+
+.tool-output #username-suggestions {
+    margin-top: 0 !important;
 }
 
 /* Strength Meter */
